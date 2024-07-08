@@ -8,16 +8,18 @@ jobs:
       runs-on: ubuntu-latest
   steps:
     -name: Check The repo
-      uses: actions/checkout@v3
+    uses: actions/checkout@v3
+    with:
+      token: ${{secrets.ACTIONS_PAT}}
     -name: Config Git
       run:
         git config --global user.name 'kbhavaniprasad'
-        git config --global user.email 'kbhavaniprasad@gmail.com'
+        git config --global user.email 'kolabhavaniprasad@gmail.com'
     -name: Fetch all branches
       run: git fetch --all
     -name: Merge main into testing
     run: 
       git checkout testing 
-      git merge main --allow-unrelated-histories
+      git merge -X theirs main --allow-unrelated-histories
       git push origin testing
 
