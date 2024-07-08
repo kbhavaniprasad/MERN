@@ -1,0 +1,23 @@
+name: Auto Merge Main to Testing Brnch
+on:
+  push:
+      branches:
+          -main
+jobs:
+  merge:
+      runs-on: ubuntu-latest
+  steps:
+    -name: Check The repo
+      uses: actions/checkout@v3
+    -name: Config Git
+      run:
+        git config --global user.name 'kbhavaniprasad'
+        git config --global user.email 'kbhavaniprasad@gmail.com'
+    -name: Fetch all branches
+      run: git fetch --all
+    -name: Merge main into testing
+    run: 
+      git checkout testing 
+      git merge main
+      git push origin testing
+
