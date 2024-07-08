@@ -24,6 +24,9 @@ async function StartServer(){
 }
 function Testing()
 {
-    return 0;
+    return (
+        'Hello world'
+    )
 }
+Testing();
 StartServer();
